@@ -1,0 +1,14 @@
+body{
+
+}
+h1{
+  font-family: 'Righteous', cursive;
+  text-align: center;
+}
+.buttons{
+  height: 300px;
+}
+.buttons button{
+  padding:10px;
+  margin: 10px;
+}
