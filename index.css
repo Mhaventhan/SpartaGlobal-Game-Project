@@ -23,6 +23,7 @@ h1{
     top: 20px;
     overflow: hidden;
     background-color: royalblue;
+    margin-top: 50px;
 
 }
 #ball{
@@ -41,8 +42,9 @@ h1{
   height: 150px;
   width: 20px ;
   background-color: white;
-  bottom: 46%;
+  bottom: 35%;
 }
+
 
 #paddle_1{
   left: 0;
@@ -51,7 +53,7 @@ h1{
   right: 0;
 }
 
-#restart_div{
+#restart_btn{
   position: absolute;
   height: 100%;
   width: 100%;
@@ -60,5 +62,6 @@ h1{
   font-family: 'Righteous', cursive;
   font-size: 40px;
   text-align: center;
+  display: none;
 
 }
