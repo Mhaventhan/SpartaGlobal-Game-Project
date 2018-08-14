@@ -33,14 +33,13 @@ $(function() {
   paddle_2 = $('#paddle_2'),
   restart = $('#restart_btn');
   // saving defualt game layout and set up
-  var game_width = parseInt(game.width()),
-  game_height = parseInt(game.height()),
+  var game_width = 1100,
+  game_height = 356,
   paddle_start_position = parseInt(paddle.css('bottom')),
   paddle_width = parseInt(paddle.width()),
   ball_top = parseInt(ball.css('top')),
   ball_height = parseInt(ball.height()),
   ball_width = parseInt(ball.width());
-
   // Game priciple variables
   // when the game is over will set to true
   var game_over = false,
@@ -54,28 +53,30 @@ $(function() {
   top = 6,
   right_top_angle = 0,
   // for player 1 paddle movement
-  move_up_p1 = false,
-  move_down_p1 = false,
+  move_up= false,
+  move_down= false,
   // for player 2 paddle movement
-  move_up_p2 = false,
-  move_down_p2 = false;
+  move_up1= false,
+  move_down1= false;
   var who_won;
   // -----------------CONTROLS-----------------------------
 
+// Assigning keyboard controls
   function up() {
        if (parseInt(paddle_2.css('top')) > 0) {
            paddle_2.css('top', parseInt(paddle_2.css('top')) - 15);
-           move_up = requestAnimationFrame(top);
+           move_up = requestAnimationFrame(up);
        }
    }
 
    function down() {
-       if (parseInt(paddle_2.css('top')) < (game_width - ball_width)) {
+       if (parseInt(paddle_2.css('top')) < (game_height - ball_height)) {
            paddle_2.css('top', parseInt(paddle_2.css('top')) + 15);
-           move_down = requestAnimationFrame(right);
+           move_down = requestAnimationFrame(down);
        }
    }
 
+// Player 1 keyboard input controls
    function up1() {
        if (parseInt(paddle_1.css('top')) > 0) {
            paddle_1.css('top', parseInt(paddle_1.css('top')) - 15);
@@ -84,26 +85,51 @@ $(function() {
    }
 
    function down1() {
-       if (parseInt(paddle_1.css('top')) < (game_width - ball_width)) {
+       if (parseInt(paddle_1.css('top')) < (game_height - ball_height)) {
            paddle_1.css('top', parseInt(paddle_1.css('top')) + 15);
-           move_up1 = requestAnimationFrame(down1);
+           move_down1 = requestAnimationFrame(down1);
        }
    }
-  // Player 1 paddle control setup
-  $(document).on('keydown',function (e) {
-    var key = e.KeyCode;
-    // move player one paddle up
-    if (key === 38 && move_up1 === false) {
-      move_up1 = requestAnimationFrame(up_p1);
-    }
-  })
-  $(document).on('keyup',function (e) {
-    var key = e.KeyCode;
-    // move player one paddle up
-    if (key === 38 && move_up1 === false) {
-      move_up1 = requestAnimationFrame(up_p1);
-    }
-  })
+
+  //Player 1 controls
+
+    $(document).on('keydown', function (e) {
+        var key = e.keyCode;
+
+          if (key == 38 && move_up == false) {
+            move_up = requestAnimationFrame(up);
+          }
+          if (key === 40 && move_down === false) {
+            move_down = requestAnimationFrame(down);
+          }
+          if (key === 87 && move_up1 === false) {
+            move_up1 = requestAnimationFrame(up1);
+          }
+          if (key === 83 && move_down1 === false) {
+            move_down1 = requestAnimationFrame(down1);
+          }
+
+
+    });
+
+
+
+    $(document).on('keyup', function (e) {
+        var key = e.keyCode;
+        if (key === 38 && game_over === false) {
+            cancelAnimationFrame(move_up);
+            move_up = false;
+        } else if (key === 40 && game_over === false) {
+            cancelAnimationFrame(move_down);
+            move_down = false;
+        } else if (key === 87 && game_over === false) {
+            cancelAnimationFrame(move_up1);
+            move_up1 = false;
+        } else if (key === 83 && game_over === false) {
+            cancelAnimationFrame(move_down1);
+            move_down1 = false;
+        }
+    });
 
 
 
