@@ -37,7 +37,7 @@ $(function() {
   game_height = parseInt(game.height()),
   paddle_start_position = parseInt(paddle.css('bottom')),
   paddle_width = parseInt(paddle.width()),
-  ball_left = parseInt(ball.css('left')),
+  ball_top = parseInt(ball.css('top')),
   ball_height = parseInt(ball.height()),
   ball_width = parseInt(ball.width());
 
@@ -49,10 +49,10 @@ $(function() {
   paddle_center,
   // used for the movement of the ball
   ball_go = 'down',
-  ball_right_left = 'right';
+  ball_right_top = 'right';
   // depends on the ball movement pixels
   top = 6,
-  right_left_angle = 0,
+  right_top_angle = 0,
   // for player 1 paddle movement
   move_up_p1 = false,
   move_down_p1 = false,
@@ -60,17 +60,64 @@ $(function() {
   move_up_p2 = false,
   move_down_p2 = false;
   var who_won;
-  // -----------------GAME FUNCTIONS START HERE-----------------------------
+  // -----------------CONTROLS-----------------------------
+
+  function up() {
+       if (parseInt(paddle_2.css('top')) > 0) {
+           paddle_2.css('top', parseInt(paddle_2.css('top')) - 15);
+           move_up = requestAnimationFrame(top);
+       }
+   }
+
+   function down() {
+       if (parseInt(paddle_2.css('top')) < (game_width - ball_width)) {
+           paddle_2.css('top', parseInt(paddle_2.css('top')) + 15);
+           move_down = requestAnimationFrame(right);
+       }
+   }
+
+   function up1() {
+       if (parseInt(paddle_1.css('top')) > 0) {
+           paddle_1.css('top', parseInt(paddle_1.css('top')) - 15);
+           move_up1 = requestAnimationFrame(up1);
+       }
+   }
+
+   function down1() {
+       if (parseInt(paddle_1.css('top')) < (game_width - ball_width)) {
+           paddle_1.css('top', parseInt(paddle_1.css('top')) + 15);
+           move_up1 = requestAnimationFrame(down1);
+       }
+   }
+  // Player 1 paddle control setup
+  $(document).on('keydown',function (e) {
+    var key = e.KeyCode;
+    // move player one paddle up
+    if (key === 38 && move_up1 === false) {
+      move_up1 = requestAnimationFrame(up_p1);
+    }
+  })
+  $(document).on('keyup',function (e) {
+    var key = e.KeyCode;
+    // move player one paddle up
+    if (key === 38 && move_up1 === false) {
+      move_up1 = requestAnimationFrame(up_p1);
+    }
+  })
+
+
+
+
 
 // Collision detection algorithm
   function collision($div1, $div2) {
-    var x1 = $div1.offset().left;
+    var x1 = $div1.offset().top;
     var y1 = $div1.offset().top;
     var h1 = $div1.outerHeight(true);
     var w1 = $div1.outerWidth(true);
     var b1 = y1 + h1;
     var r1 = x1 + w1;
-    var x2 = $div2.offset().left;
+    var x2 = $div2.offset().top;
     var y2 = $div2.offset().top;
     var h2 = $div2.outerHeight(true);
     var w2 = $div2.outerWidth(true);
