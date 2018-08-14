@@ -60,7 +60,7 @@ $(function() {
   move_up_p2 = false,
   move_down_p2 = false;
   var who_won;
-  // -----------------GAME FUNCTIONS START HERE---------------------------------
+  // -----------------GAME FUNCTIONS START HERE-----------------------------
 
 // Collision detection algorithm
   function collision($div1, $div2) {
