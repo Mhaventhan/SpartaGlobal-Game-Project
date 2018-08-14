@@ -62,6 +62,7 @@ $(function() {
   // -----------------CONTROLS-----------------------------
 
 // Assigning keyboard controls
+// Player 1 keyboard input controls
   function up() {
        if (parseInt(paddle_2.css('top')) > 0) {
            paddle_2.css('top', parseInt(paddle_2.css('top')) - 15);
@@ -70,13 +71,12 @@ $(function() {
    }
 
    function down() {
-       if (parseInt(paddle_2.css('top')) < (game_height - ball_height)) {
+       if (parseInt(paddle_2.css('top')) < (game_height - paddle_width)) {
            paddle_2.css('top', parseInt(paddle_2.css('top')) + 15);
            move_down = requestAnimationFrame(down);
        }
    }
 
-// Player 1 keyboard input controls
    function up1() {
        if (parseInt(paddle_1.css('top')) > 0) {
            paddle_1.css('top', parseInt(paddle_1.css('top')) - 15);
@@ -85,7 +85,7 @@ $(function() {
    }
 
    function down1() {
-       if (parseInt(paddle_1.css('top')) < (game_height - ball_height)) {
+       if (parseInt(paddle_1.css('top')) < (game_height - paddle_width)) {
            paddle_1.css('top', parseInt(paddle_1.css('top')) + 15);
            move_down1 = requestAnimationFrame(down1);
        }
@@ -95,41 +95,43 @@ $(function() {
 
     $(document).on('keydown', function (e) {
         var key = e.keyCode;
+        if (key === 38 && move_up === false && game_over === false) {
+          move_up = requestAnimationFrame(up);
+        }
+        if (key === 40 && move_down === false && game_over === false) {
+          move_down = requestAnimationFrame(down);
+        }
+        if (key === 87 && move_up1 === false && game_over === false) {
+          move_up1 = requestAnimationFrame(up1);
+        }
+        if (key === 83 && move_down1 === false && game_over === false) {
+          move_down1 = requestAnimationFrame(down1);
+        }
+      });
 
-          if (key == 38 && move_up == false) {
-            move_up = requestAnimationFrame(up);
-          }
-          if (key === 40 && move_down === false) {
-            move_down = requestAnimationFrame(down);
-          }
-          if (key === 87 && move_up1 === false) {
-            move_up1 = requestAnimationFrame(up1);
-          }
-          if (key === 83 && move_down1 === false) {
-            move_down1 = requestAnimationFrame(down1);
-          }
-
-
-    });
-
-
-
-    $(document).on('keyup', function (e) {
+      $(document).on('keyup', function (e) {
         var key = e.keyCode;
         if (key === 38 && game_over === false) {
-            cancelAnimationFrame(move_up);
-            move_up = false;
+          cancelAnimationFrame(move_up);
+          move_up = false;
         } else if (key === 40 && game_over === false) {
-            cancelAnimationFrame(move_down);
-            move_down = false;
+          cancelAnimationFrame(move_down);
+          move_down = false;
         } else if (key === 87 && game_over === false) {
-            cancelAnimationFrame(move_up1);
-            move_up1 = false;
+          cancelAnimationFrame(move_up1);
+          move_up1 = false;
         } else if (key === 83 && game_over === false) {
-            cancelAnimationFrame(move_down1);
-            move_down1 = false;
+          cancelAnimationFrame(move_down1);
+          move_down1 = false;
         }
-    });
+      });
+
+
+
+
+
+
+
 
 
 
