@@ -34,7 +34,7 @@ $(function() {
   restart = $('#restart_btn');
   // saving defualt game layout and set up
   var game_width = 1100,
-  game_height = 400,
+  game_height = 356,
   paddle_start_position = parseInt(paddle.css('bottom')),
   paddle_width = parseInt(paddle.width()),
   ball_top = parseInt(ball.css('top')),
