@@ -13,7 +13,7 @@
   <title>Pong</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container-fluid">
     <div class="mainMenu">
       <header >
         <div class="row">
@@ -47,15 +47,19 @@
         </header>
       </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="play">
-      <header >
+    <div class="container">
+      <div class="play">
         <div class="row">
           <div class="col-md-12">
+            <div id="game">
+              <div id="ball"></div>
+              <div id="paddle_1"class="paddle"></div>
+              <div id="paddle_2"class="paddle"></div>
+            </div>
+            <div id="restart_div"><button id="restart">Restart</button></div>
           </div>
         </div>
-      </header>
+      </div>
     </div>
   </div>
   <div class="container">
