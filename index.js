@@ -30,11 +30,11 @@ $(function() {
 
   // Saving DOM object to variables to make it easier call
   var game = $('#game');
-  const $ball = $('#ball');
+  var $ball = $('#ball');
   var paddle = $('.paddle');
   var paddle_1 = $('#paddle_1');
   var paddle_2 = $('#paddle_2');
-  const restart = $('#restart_btn');
+  var restart = $('#restart_btn');
 
 // four directions to set direction of the ball based on collision
   const UP_LEFT = -3 * Math.PI / 4;
@@ -186,22 +186,5 @@ ball = {
           move_down1 = false;
         }
       });
-      // Collision detection algorithm
-      function collision($div1, $div2) {
-        var x1 = $div1.offset().top;
-        var y1 = $div1.offset().top;
-        var h1 = $div1.outerHeight(true);
-        var w1 = $div1.outerWidth(true);
-        var b1 = y1 + h1;
-        var r1 = x1 + w1;
-        var x2 = $div2.offset().top;
-        var y2 = $div2.offset().top;
-        var h2 = $div2.outerHeight(true);
-        var w2 = $div2.outerWidth(true);
-        var b2 = y2 + h2;
-        var r2 = x2 + w2;
-
-        if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
-        return true;
-      }
+  
 })
