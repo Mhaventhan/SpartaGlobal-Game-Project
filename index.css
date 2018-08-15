@@ -47,15 +47,13 @@ h1{
 
 }
 #ball{
-  position: absolute;
-   background: #f4bf42;
-   height: 20px;
-   width: 20px;
-   background-size: 100% 100%;
-   background-repeat: no-repeat;
-   border-radius: 50%;
-   top: 20%;
-   left: 50%;
+  background-color: #ffffb9;
+    width: 20px;
+    height: 20px;
+    left: 460px;
+    top: 140px;
+    border-radius: 50%;
+    position: absolute;
 }
 
 .paddle{
