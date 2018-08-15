@@ -5,16 +5,32 @@ body{
 
 }
 
+.box {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+}
+
 h1{
   font-family: 'Righteous', cursive;
   text-align: center;
+  color: white;
 }
-.buttons{
-  height: 300px;
+.bt{
+  margin-left: 40%;
 }
 .buttons button{
   padding:10px;
-  margin: 10px;
+  margin: 25px;
+  background-color: #f44248;
+  font-family: 'Righteous', cursive;
+  text-align: center;
+  color: white;
+  border-radius: 6%;
+  width: 200px;
+
+
 }
 #game {
     position: relative;
@@ -32,11 +48,12 @@ h1{
 }
 #ball{
   position: absolute;
-   background: #cec8c8;
+   background: #f4bf42;
    height: 20px;
    width: 20px;
    background-size: 100% 100%;
    background-repeat: no-repeat;
+   border-radius: 50%;
    top: 20%;
    left: 50%;
 }

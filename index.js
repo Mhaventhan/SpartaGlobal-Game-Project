@@ -1,11 +1,39 @@
 $(function() {
   // on launch to hide the following to prevent overlap
-  setTimeout(function(){
-    // $('#ball').animate(
-    //   left: "+=300px"
-    console.log("this")
+  var acc = $("#ball").position().top *= 0.09;
+  setInterval(function(){
 
-  }, 3000)
+    if ($("#ball").position().top < 470) {
+      $("#ball").animate({
+        top: "+="+acc+"px"
+      }, 10);
+    }
+    if ($("#ball").position().left < 1200) {
+      $("#ball").animate({
+        left: "+="+acc+"px"
+      }, 10);
+    }
+
+    // if ($("#ball").position().top > 0) {
+    //   $("#ball").animate({
+    //     top: "-="+acc+"px"
+    //   }, 10);
+    // }
+    // if ($("#ball").position().left > 0) {
+    //   $("#ball").animate({
+    //     left: "-="+acc+"px"
+    //   }, 10);
+    // }
+
+
+
+  }, 100)
+
+  // setInterval(function(){
+  //   $("#ball").animate({
+  //     left: "-=150px"
+  //   }, 500);
+  // }, 4000)
 
   $(".instructions").hide();
   $(".play").hide();
