@@ -29,7 +29,7 @@ $(function() {
 
 
   // Saving DOM object to variables to make it easier call
-  var game = $('#game');
+  var $game = $('#game');
   var $ball = $('#ball');
   var paddle = $('.paddle');
   var paddle_1 = $('#paddle_1');
@@ -64,7 +64,7 @@ ball = {
     top: 200,
     left: 200,
     angle: UP_RIGHT,
-    speed: 1
+    speed: 5
   }
 
   // to update the ball and othe elements
@@ -84,7 +84,7 @@ ball = {
    left: `${ball.left}px`
  });
 
- if (isBallOverlappingWithPlayerPadel()) {
+ if (ball_Player_1_collision()) {
     if (ball.angle === UP_LEFT) {
       ball.angle = UP_RIGHT;
     } else {
@@ -92,7 +92,7 @@ ball = {
     }
   }
 
-  if (isBallOverlappingWithAiPadel()) {
+  if (ball_Player_2_collision()) {
     if (ball.angle === UP_RIGHT) {
       ball.angle = UP_LEFT;
     } else {
@@ -100,7 +100,7 @@ ball = {
     }
   }
 
-  if (isBallOverlappingWithTop()) {
+  if (ball_Top_collision()) {
     if (ball.angle === UP_RIGHT) {
       ball.angle = DOWN_RIGHT;
     } else {
@@ -108,7 +108,7 @@ ball = {
     }
   }
 
-  if (isBallOverlappingWithBottom()) {
+  if (ball_bottom_collision()) {
     if (ball.angle === DOWN_RIGHT) {
       ball.angle = UP_RIGHT;
     } else {
@@ -116,6 +116,22 @@ ball = {
     }
   }
 
+  }
+
+  function ball_Player_1_collision () {
+  return $ball.overlaps('#paddle_1').length > 0
+  }
+
+function ball_Player_2_collision () {
+  return $ball.overlaps('#paddle_2').length > 0
+  }
+
+function ball_Top_collision () {
+  return ball.top <= 0;
+  }
+
+function ball_bottom_collision() {
+  return ball.top >= $game.height() - $ball.height();
   }
 
 
@@ -186,5 +202,5 @@ ball = {
           move_down1 = false;
         }
       });
-  
+
 })
