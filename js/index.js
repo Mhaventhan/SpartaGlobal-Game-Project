@@ -58,7 +58,6 @@ $(function() {
   // for player 2 paddle movement
   move_up1= false,
   move_down1= false;
-  var who_won;
   // to update the ball and othe elements
 function gameStart() {
     ball = {
