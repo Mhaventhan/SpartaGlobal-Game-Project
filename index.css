@@ -44,7 +44,7 @@ h1 {
     overflow-y: hidden;
   }
 #ball {
-  background-color: #ffffb9;
+  background-color: yellow;
     width: 20px;
     height: 20px;
     left: 460px;
