@@ -73,9 +73,17 @@ ball = {
 
   function update() {
     updateBall();
+    // conditional to find who scored
+    if ($ball.position().left < 0) {
+      score(Player 1);
+    }else if($ball.position().left > 1200){
+      score(Player 2);
+    }
   };
-
-  // // set interval delay
+  // function to display who scored
+  function score(player) {
+    $('#score').empty().text(player+ "won");
+  }
 
 
   function updateBall() {
