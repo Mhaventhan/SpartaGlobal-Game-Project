@@ -1,40 +1,5 @@
 $(function() {
   // on launch to hide the following to prevent overlap
-  var acc = $("#ball").position().top *= 0.09;
-  setInterval(function(){
-
-    if ($("#ball").position().top < 470) {
-      $("#ball").animate({
-        top: "+="+acc+"px"
-      }, 10);
-    }
-    if ($("#ball").position().left < 1200) {
-      $("#ball").animate({
-        left: "+="+acc+"px"
-      }, 10);
-    }
-
-    // if ($("#ball").position().top > 0) {
-    //   $("#ball").animate({
-    //     top: "-="+acc+"px"
-    //   }, 10);
-    // }
-    // if ($("#ball").position().left > 0) {
-    //   $("#ball").animate({
-    //     left: "-="+acc+"px"
-    //   }, 10);
-    // }
-
-
-
-  }, 100)
-
-  // setInterval(function(){
-  //   $("#ball").animate({
-  //     left: "-=150px"
-  //   }, 500);
-  // }, 4000)
-
   $(".instructions").hide();
   $(".play").hide();
   $(".score").hide();
@@ -60,33 +25,33 @@ $(function() {
       $(".score").show();
     }
   })
+
+
+
   // Saving DOM object to variables to make it easier call
-  var game = $('#game'),
-  ball = $('#ball'),
-  paddle = $('.paddle'),
-  paddle_1 = $('#paddle_1'),
-  paddle_2 = $('#paddle_2'),
-  restart = $('#restart_btn');
+  var $game = $('#game');
+  var $ball = $('#ball');
+  var paddle = $('.paddle');
+  var paddle_1 = $('#paddle_1');
+  var paddle_2 = $('#paddle_2');
+  var restart = $('#restart_btn');
+
+// four directions to set direction of the ball based on collision
+  const UP_LEFT = -3 * Math.PI / 4;
+  const UP_RIGHT = - Math.PI / 4;
+  const DOWN_LEFT = 3 * Math.PI / 4;
+  const DOWN_RIGHT = Math.PI / 4;
+
+
   // saving defualt game layout and set up
   var game_width = 1100,
   game_height = 360,
   paddle_start_position = parseInt(paddle.css('bottom')),
-  paddle_width = parseInt(paddle.width()),
-  ball_top = parseInt(ball.css('top')),
-  ball_height = parseInt(ball.height()),
-  ball_width = parseInt(ball.width());
-  // Game priciple variables
+  paddle_width = parseInt(paddle.width());
+
   // when the game is over will set to true
   var game_over = false,
-  // to receive ball and paddle center position
-  ball_center,
-  paddle_center,
-  // used for the movement of the ball
-  ball_go = 'down',
-  ball_right_top = 'right';
-  // depends on the ball movement pixels
-  top = 6,
-  right_top_angle = 0,
+
   // for player 1 paddle movement
   move_up= false,
   move_down= false,
@@ -94,6 +59,82 @@ $(function() {
   move_up1= false,
   move_down1= false;
   var who_won;
+
+ball = {
+    top: 200,
+    left: 200,
+    angle: UP_RIGHT,
+    speed: 5
+  }
+
+  // to update the ball and othe elements
+  function update() {
+    updateBall();
+  };
+
+  // set interval delay
+  setInterval(update, 20);
+
+  function updateBall() {
+    ball.top += ball.speed * Math.sin(ball.angle);
+    ball.left += ball.speed * Math.cos(ball.angle);
+
+    $ball.css({
+   top: `${ball.top}px`,
+   left: `${ball.left}px`
+ });
+
+ if (ball_Player_1_collision()) {
+    if (ball.angle === UP_LEFT) {
+      ball.angle = UP_RIGHT;
+    } else {
+      ball.angle = DOWN_RIGHT;
+    }
+  }
+
+  if (ball_Player_2_collision()) {
+    if (ball.angle === UP_RIGHT) {
+      ball.angle = UP_LEFT;
+    } else {
+      ball.angle = DOWN_LEFT;
+    }
+  }
+
+  if (ball_Top_collision()) {
+    if (ball.angle === UP_RIGHT) {
+      ball.angle = DOWN_RIGHT;
+    } else {
+      ball.angle = DOWN_LEFT;
+    }
+  }
+
+  if (ball_bottom_collision()) {
+    if (ball.angle === DOWN_RIGHT) {
+      ball.angle = UP_RIGHT;
+    } else {
+      ball.angle = UP_LEFT;
+    }
+  }
+
+  }
+
+  function ball_Player_1_collision () {
+  return $ball.overlaps('#paddle_1').length > 0
+  }
+
+function ball_Player_2_collision () {
+  return $ball.overlaps('#paddle_2').length > 0
+  }
+
+function ball_Top_collision () {
+  return ball.top <= 0;
+  }
+
+function ball_bottom_collision() {
+  return ball.top >= $game.height() - $ball.height();
+  }
+
+
 
   // -----------------CONTROLS-----------------------------
 
@@ -161,37 +202,5 @@ $(function() {
           move_down1 = false;
         }
       });
-
-
-
-
-
-
-
-
-
-
-
-
-// Collision detection algorithm
-  function collision($div1, $div2) {
-    var x1 = $div1.offset().top;
-    var y1 = $div1.offset().top;
-    var h1 = $div1.outerHeight(true);
-    var w1 = $div1.outerWidth(true);
-    var b1 = y1 + h1;
-    var r1 = x1 + w1;
-    var x2 = $div2.offset().top;
-    var y2 = $div2.offset().top;
-    var h2 = $div2.outerHeight(true);
-    var w2 = $div2.outerWidth(true);
-    var b2 = y2 + h2;
-    var r2 = x2 + w2;
-
-    if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
-    return true;
-}
-
-
 
 })
