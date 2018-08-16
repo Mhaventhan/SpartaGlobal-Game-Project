@@ -17,19 +17,17 @@ $(function() {
       $(".mainMenu").hide();
       // to direct the click to play view to the game
       $(".play").show();
-      setInterval(update, 10);
+      gameStart();
     }
-    if ($(this).text().toLowerCase() == "score") {
+    if ($(this).text().toLowerCase() == "leaderboard") {
       // to hide main menu
       $(".mainMenu").hide();
+      $(".play").hide();
       // to show the high score board
       $(".score").show();
     }
   })
-
-
-
-  // Saving DOM object to variables to make it easier call
+// Saving DOM object to variables to make it easier call
   var $game = $('#game');
    $ball = $('#ball'),
   paddle = $('.paddle'),
@@ -47,6 +45,7 @@ $(function() {
   // saving defualt game layout and set up
   var game_width = 1100,
   game_height = 360,
+  interval,
   paddle_start_position = parseInt(paddle.css('bottom')),
   paddle_width = parseInt(paddle.width());
 
@@ -60,30 +59,29 @@ $(function() {
   move_up1= false,
   move_down1= false;
   var who_won;
-
-ball = {
-    top: 200,
-    left: 200,
-    angle: UP_RIGHT,
-    speed: 5
-  }
-
   // to update the ball and othe elements
-
-
-  function update() {
-    updateBall();
-    // conditional to find who scored
-    if ($ball.position().left < 0) {
-      score(Player 1);
-    }else if($ball.position().left > 1200){
-      score(Player 2);
+function gameStart() {
+    ball = {
+      top: 200,
+      left: 200,
+      angle: UP_RIGHT,
+      speed: 5
     }
-  };
-  // function to display who scored
-  function score(player) {
-    $('#score').empty().text(player+ "won");
+    interval = setInterval(update, 20);
   }
+    function update() {
+      updateBall();
+      // conditional to find who scored
+      if ($ball.position().left < 0) {
+        score("Player 1");
+      }else if($ball.position().left > 1200){
+        score("Player 2");
+      }
+    };
+    // function to display who scored
+    function score(player) {
+      $('#score').empty().text(player+ " won");
+    }
 
 
   function updateBall() {
@@ -133,15 +131,15 @@ ball = {
   return $ball.overlaps('#paddle_1').length > 0
   }
 
-function ball_Player_2_collision () {
+  function ball_Player_2_collision () {
   return $ball.overlaps('#paddle_2').length > 0
   }
 
-function ball_Top_collision () {
+  function ball_Top_collision () {
   return ball.top <= 0;
   }
 
-function ball_bottom_collision() {
+  function ball_bottom_collision() {
   return ball.top >= $game.height() - $ball.height();
   }
   // -----------------CONTROLS-----------------------------
@@ -209,6 +207,7 @@ function ball_bottom_collision() {
       cancelAnimationFrame(move_down1);
       move_down1 = false;
     }
-  });
+});
+
 
 })
