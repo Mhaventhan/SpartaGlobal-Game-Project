@@ -17,6 +17,7 @@ $(function() {
       $(".mainMenu").hide();
       // to direct the click to play view to the game
       $(".play").show();
+      setInterval(update, 10);
     }
     if ($(this).text().toLowerCase() == "score") {
       // to hide main menu
@@ -37,10 +38,10 @@ $(function() {
   var restart = $('#restart_btn');
 
 // four directions to set direction of the ball based on collision
-  const UP_LEFT = -3 * Math.PI / 4;
-  const UP_RIGHT = - Math.PI / 4;
-  const DOWN_LEFT = 3 * Math.PI / 4;
-  const DOWN_RIGHT = Math.PI / 4;
+  var UP_LEFT = -3 * Math.PI / 4,
+  UP_RIGHT = - Math.PI / 4,
+  DOWN_LEFT = 3 * Math.PI / 4,
+  DOWN_RIGHT = Math.PI / 4;
 
 
   // saving defualt game layout and set up
@@ -68,12 +69,14 @@ ball = {
   }
 
   // to update the ball and othe elements
+
+
   function update() {
     updateBall();
   };
 
-  // set interval delay
-  setInterval(update, 20);
+  // // set interval delay
+
 
   function updateBall() {
     ball.top += ball.speed * Math.sin(ball.angle);
