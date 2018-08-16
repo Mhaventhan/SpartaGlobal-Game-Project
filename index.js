@@ -31,11 +31,11 @@ $(function() {
 
   // Saving DOM object to variables to make it easier call
   var $game = $('#game');
-  var $ball = $('#ball');
-  var paddle = $('.paddle');
-  var paddle_1 = $('#paddle_1');
-  var paddle_2 = $('#paddle_2');
-  var restart = $('#restart_btn');
+   $ball = $('#ball'),
+  paddle = $('.paddle'),
+  paddle_1 = $('#paddle_1'),
+  paddle_2 = $('#paddle_2'),
+  restart = $('#restart_btn');
 
 // four directions to set direction of the ball based on collision
   var UP_LEFT = -3 * Math.PI / 4,
@@ -136,74 +136,71 @@ function ball_Top_collision () {
 function ball_bottom_collision() {
   return ball.top >= $game.height() - $ball.height();
   }
-
-
-
   // -----------------CONTROLS-----------------------------
 
-// Assigning keyboard controls
-// Player 1 keyboard input controls
+  // Assigning keyboard controls
+  // Player 1 keyboard input controls
   function up() {
-       if (parseInt(paddle_2.css('bottom')) > 0) {
-           paddle_2.css('bottom', parseInt(paddle_2.css('bottom')) - 15);
-           move_up = requestAnimationFrame(up);
-       }
-   }
+    if (parseInt(paddle_2.css('bottom')) > 0) {
+      paddle_2.css('bottom', parseInt(paddle_2.css('bottom')) - 15);
+      move_up = requestAnimationFrame(up);
+    }
+  }
 
-   function down() {
-       if (parseInt(paddle_2.css('bottom')) < (game_height - paddle_width)) {
-           paddle_2.css('bottom', parseInt(paddle_2.css('bottom')) + 15);
-           move_down = requestAnimationFrame(down);
-       }
-   }
+  function down() {
+    if (parseInt(paddle_2.css('bottom')) < (game_height - paddle_width)) {
+      paddle_2.css('bottom', parseInt(paddle_2.css('bottom')) + 15);
+      move_down = requestAnimationFrame(down);
+    }
+  }
 
-   function up1() {
-       if (parseInt(paddle_1.css('bottom')) > 0) {
-           paddle_1.css('bottom', parseInt(paddle_1.css('bottom')) - 15);
-           move_up1 = requestAnimationFrame(up1);
-       }
-   }
+  function up1() {
+    if (parseInt(paddle_1.css('bottom')) > 0) {
+      paddle_1.css('bottom', parseInt(paddle_1.css('bottom')) - 15);
+      move_up1 = requestAnimationFrame(up1);
+    }
+  }
 
-   function down1() {
-       if (parseInt(paddle_1.css('bottom')) < (game_height - paddle_width)) {
-           paddle_1.css('bottom', parseInt(paddle_1.css('bottom')) + 15);
-           move_down1 = requestAnimationFrame(down1);
-       }
-   }
+  function down1() {
+    if (parseInt(paddle_1.css('bottom')) < (game_height - paddle_width)) {
+      paddle_1.css('bottom', parseInt(paddle_1.css('bottom')) + 15);
+      move_down1 = requestAnimationFrame(down1);
+    }
+  }
 
   //Player 1 controls
 
-    $(document).on('keydown', function (e) {
-        var key = e.keyCode;
-        if (key === 40 && move_up === false && game_over === false) {
-          move_up = requestAnimationFrame(up);
-        }
-        if (key === 38 && move_down === false && game_over === false) {
-          move_down = requestAnimationFrame(down);
-        }
-        if (key === 83 && move_up1 === false && game_over === false) {
-          move_up1 = requestAnimationFrame(up1);
-        }
-        if (key === 87 && move_down1 === false && game_over === false) {
-          move_down1 = requestAnimationFrame(down1);
-        }
-      });
+  $(document).on('keydown', function (e) {
+    var key = e.keyCode;
+    if (key === 40 && move_up === false && game_over === false) {
+      move_up = requestAnimationFrame(up);
+    }
+    if (key === 38 && move_down === false && game_over === false) {
+      move_down = requestAnimationFrame(down);
+    }
+    if (key === 83 && move_up1 === false && game_over === false) {
+      move_up1 = requestAnimationFrame(up1);
+    }
+    if (key === 87 && move_down1 === false && game_over === false) {
+      move_down1 = requestAnimationFrame(down1);
+    }
+  });
 
-      $(document).on('keyup', function (e) {
-        var key = e.keyCode;
-        if (key === 40 && game_over === false) {
-          cancelAnimationFrame(move_up);
-          move_up = false;
-        } else if (key === 38 && game_over === false) {
-          cancelAnimationFrame(move_down);
-          move_down = false;
-        } else if (key === 83 && game_over === false) {
-          cancelAnimationFrame(move_up1);
-          move_up1 = false;
-        } else if (key === 87 && game_over === false) {
-          cancelAnimationFrame(move_down1);
-          move_down1 = false;
-        }
-      });
+  $(document).on('keyup', function (e) {
+    var key = e.keyCode;
+    if (key === 40 && game_over === false) {
+      cancelAnimationFrame(move_up);
+      move_up = false;
+    } else if (key === 38 && game_over === false) {
+      cancelAnimationFrame(move_down);
+      move_down = false;
+    } else if (key === 83 && game_over === false) {
+      cancelAnimationFrame(move_up1);
+      move_up1 = false;
+    } else if (key === 87 && game_over === false) {
+      cancelAnimationFrame(move_down1);
+      move_down1 = false;
+    }
+  });
 
 })

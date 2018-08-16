@@ -15,6 +15,7 @@ h1 {
   font-family: 'Righteous', cursive;
   text-align: center;
   color: white;
+  font-size: 100px;
   }
 
 .bt{
@@ -27,9 +28,11 @@ h1 {
   background-color: #f44248;
   font-family: 'Righteous', cursive;
   text-align: center;
+  font-size: 40px;
   color: white;
   border-radius: 6%;
-  width: 200px;
+  width: 250px;
+  height: 100px;
 }
 #game {
     position: relative;
