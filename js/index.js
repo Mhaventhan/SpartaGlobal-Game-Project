@@ -18,7 +18,7 @@ var ball = {};
       $(".mainMenu").hide();
       // to direct the click to play view to the game
       $(".play").show();
-      interval = setInterval(update, 20);
+      interval = setInterval(update, 10);
       gameStart();
     }
     if ($(this).text().toLowerCase() == "leaderboard") {
@@ -59,9 +59,17 @@ var ball = {};
   function update() {
     updateball();
     // conditional to find who scored
-    if ($('#ball').position().left < 0) {
+    if ($('#ball').position().left < -1) {
+      ball.top = 200;
+      ball.left = 600;
+      ball.angle = UP_RIGHT;
+      ball.speed = 5;
       score("Player 1");
     }else if($('#ball').position().left > 1200){
+      ball.top = 200;
+      ball.left = 300;
+      ball.angle = UP_LEFT;
+      ball.speed = 5;
       score("Player 2");
     }
   };
