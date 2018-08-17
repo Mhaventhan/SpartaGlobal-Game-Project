@@ -99,3 +99,29 @@ h1 {
 button:hover,#score_btn:hover,#restart_btn:hover{
   color: #4286f4;
 }
+
+#scoreDis{
+  font-size: 200px;
+  opacity: .7;
+  padding-left: 30%;
+  padding-top: 30%;
+  display: inline-block;
+}
+#scoreDis2{
+  font-size: 200px;
+  opacity: .7;
+  padding-left: 30%;
+  padding-top: 30%;
+  display: inline-block;
+}
+
+#table{
+  font-size: 100px;
+  font-family: 'Righteous', cursive;
+  color: #f44248;
+  margin-left: 15%;
+  text-align: center;
+}
+#table tr td{
+  opacity: .7;
+}
