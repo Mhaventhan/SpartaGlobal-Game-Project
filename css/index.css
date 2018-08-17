@@ -1,5 +1,5 @@
 body {
-  background-image: url("img/background.jpg");
+  background-image: url("../img/background.jpg");
   background-size: cover;
   height: 100vh;
  }
@@ -14,7 +14,8 @@ body {
 h1 {
   font-family: 'Righteous', cursive;
   text-align: center;
-  color: white;
+  color: #e4ef45;
+  font-size: 100px;
   }
 
 .bt{
@@ -27,21 +28,30 @@ h1 {
   background-color: #f44248;
   font-family: 'Righteous', cursive;
   text-align: center;
+  font-size: 40px;
   color: white;
   border-radius: 6%;
-  width: 200px;
+  width: 250px;
+  height: 100px;
 }
 #game {
     position: relative;
     height: 500px;
     top: 20px;
     overflow: hidden;
-    background-image: url('img/grid.png');
+    background-image: url('../img/grid.png');
     background-repeat: no-repeat;
     background-size: 1110px 501px;
     margin-top: 50px;
     overflow-x: hidden;
     overflow-y: hidden;
+  }
+  #score{
+    margin: -250px;
+    font-family: 'Righteous', cursive;
+    text-align: center;
+    font-size: 40px;
+    color: white;
   }
 #ball {
   background-color: yellow;
@@ -73,15 +83,19 @@ h1 {
   right: 0;
 }
 
-#restart_btn{
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background-color: blueviolet;
-  color: white;
+#restart_btn, #score_btn{
+  margin-top: 50px;
+  margin-left: 250%;
+  background-color: #f44248;
   font-family: 'Righteous', cursive;
-  font-size: 40px;
   text-align: center;
-  display: none;
+  font-size: 25px;
+  color: white;
+  border-radius: 6%;
+  width: 155px;
+  height: 50px;
+}
 
+button:hover,#score_btn:hover,#restart_btn:hover{
+  color: #4286f4;
 }
