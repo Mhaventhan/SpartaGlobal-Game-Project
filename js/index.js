@@ -1,5 +1,8 @@
 $(function() {
 var ball = {};
+var scoreCount1 = 0;
+var scoreCount2 = 0;
+
 // on launch to hide the following to prevent overlap
   $(".instructions").hide();
   $(".play").hide();
@@ -25,10 +28,24 @@ var ball = {};
       // to hide main menu
       $(".mainMenu").hide();
       $(".play").hide();
+
       // to show the high score board
+      $("#table").append("<tr><td>Player 1:"+"</td><td>"+localStorage.getItem("Player 1:")+"</td></tr>");
+      $("#table").append("<tr><td>Player 2:"+"</td><td>"+localStorage.getItem("Player 2:")+"</td></tr>");
       $(".score").show();
     }
+
+    if ($(this).text().toLowerCase() == "restart") {
+      clearInterval(interval);
+      interval = setInterval(update, 10);
+      $('#scoreDis2').empty().text(0);
+      $('#scoreDis').empty().text(0);
+      scoreCount1 = 0;
+      scoreCount2 = 0;
+      gameStart();
+    }
   })
+
 
 // four directions to set direction of the ball based on collision
   var UP_LEFT = -3 * Math.PI / 4,
@@ -60,19 +77,34 @@ var ball = {};
     updateball();
     // conditional to find who scored
     if ($('#ball').position().left < -1) {
+      scoreCount1++;
       ball.top = 200;
       ball.left = 600;
       ball.angle = UP_RIGHT;
       ball.speed = 5;
-      score("Player 1");
+      localStorage.setItem("Player 1:", scoreCount1);
+      if (scoreCount1 == 7){
+        score("player 1:");
+        clearInterval(interval);
+      }
+      $('#scoreDis').empty().text(scoreCount1);
     }else if($('#ball').position().left > 1200){
+      scoreCount2++;
       ball.top = 200;
       ball.left = 300;
       ball.angle = UP_LEFT;
       ball.speed = 5;
-      score("Player 2");
+      localStorage.setItem("Player 2:", scoreCount2);
+      if (scoreCount2 == 7){
+        score("player 2:");
+        clearInterval(interval);
+      }
+      $('#scoreDis2').empty().text(scoreCount2);
     }
+
   };
+
+
   // function to display who scored
   function score(player) {
     $('#score').empty().text(player+ " won");
@@ -183,7 +215,6 @@ var ball = {};
       move_down1 = requestAnimationFrame(down1);
     }
   });
-
   $(document).on('keyup', function (e) {
     var key = e.keyCode;
     if (key === 40 && game_over === false) {
