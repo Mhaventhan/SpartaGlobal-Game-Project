@@ -82,6 +82,17 @@ h1 {
 #paddle_2{
   right: 0;
 }
+h2{
+  font-family: 'Righteous', cursive;
+  text-align: center;
+  color: #f44248;
+  font-size: 50px;
+}
+img{
+  display: block;
+  margin-left: 30%;
+}
+
 
 #restart_btn, #score_btn{
   margin-top: 50px;
