@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-overlaps/1.2.3/jquery.overlaps.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/index.js" charset="utf-8"></script>
+  <title>Pong</title>
+</head>
+<body>
+    <div class="container-fluid">
+      <div class="mainMenu">
+        <header >
+          <div class="row">
+            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              <h1>Ping Pong</h1>
+            </div>
+          </div>
+        </header>
+        <section class="row buttons">
+          <div class="bt col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <button type="button" name="button">Instructions</button>
+            </div>
+            <div class="row">
+              <button type="button" name="button">Play</button>
+            </div>
+            <div class="row">
+              <button type="button" name="button">leaderboard</button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="container">
+        <div class="instructions">
+          <header >
+            <div class="row">
+              <div class="col-md-12">
+                <h1>Instructions</h1>
+                <h2>keyboard controls for player 1 and 2 paddle movements</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h2>Player 1</h2>
+                    <img src="img/arrow keys.png" alt="player 1 arrow keys">
+                  </div>
+                  <div class="col-md-6">
+                    <h2>Player 2</h2>
+                    <img src="img/wasd key.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="play">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="game">
+              <div id="ball"></div>
+              <div id="paddle_1"class="paddle">2</div>
+              <div id="paddle_2"class="paddle">1</div>
+              <div class="row">
+                <div class="col-md-6">
+                  <h1 id='scoreDis2'>0</h1>
+                </div>
+                <div class="col-md-6">
+                  <h1 id='scoreDis'>0</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p id='score'></p>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <button id="restart_btn">Restart</button>
+            </div>
+            <div class="col-md-6">
+              <button id="score_btn">leaderboard</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="score">
+          <h1>High score</h1>
+          <header >
+            <div class="row">
+              <div class="col-md-12">
+                <table id="table">
+                  <th>Player</th>
+                  <th>Score</th>
+                </table>
+              </div>
+            </div>
+          </header>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
