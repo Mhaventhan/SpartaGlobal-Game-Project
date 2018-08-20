@@ -13,100 +13,100 @@
   <title>Pong</title>
 </head>
 <body>
-  <div class="container-fluid">
-    <div class="mainMenu">
-      <header >
-        <div class="row">
-          <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
-            <h1>Ping Pong</h1>
-          </div>
-        </div>
-      </header>
-      <section class="row buttons">
-        <div class="bt col-md-12 col-xs-12 col-lg-12 col-sm-12">
-          <div class="row">
-            <button type="button" name="button">Instructions</button>
-          </div>
-          <div class="row">
-            <button type="button" name="button">Play</button>
-          </div>
-          <div class="row">
-            <button type="button" name="button">leaderboard</button>
-          </div>
-        </div>
-      </section>
-    </div>
-    <div class="container">
-      <div class="instructions">
+    <div class="container-fluid">
+      <div class="mainMenu">
         <header >
           <div class="row">
-            <div class="col-md-12">
-              <h1>Instructions</h1>
-              <h2>keyboard controls for player 1 and 2 paddle movements</h2>
+            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+              <h1>Ping Pong</h1>
+            </div>
+          </div>
+        </header>
+        <section class="row buttons">
+          <div class="bt col-md-12 col-xs-12 col-lg-12 col-sm-12">
+            <div class="row">
+              <button type="button" name="button">Instructions</button>
+            </div>
+            <div class="row">
+              <button type="button" name="button">Play</button>
+            </div>
+            <div class="row">
+              <button type="button" name="button">leaderboard</button>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="container">
+        <div class="instructions">
+          <header >
+            <div class="row">
+              <div class="col-md-12">
+                <h1>Instructions</h1>
+                <h2>keyboard controls for player 1 and 2 paddle movements</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <h2>Player 1</h2>
+                    <img src="img/arrow keys.png" alt="player 1 arrow keys">
+                  </div>
+                  <div class="col-md-6">
+                    <h2>Player 2</h2>
+                    <img src="img/wasd key.png" alt="">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="play">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="game">
+              <div id="ball"></div>
+              <div id="paddle_1"class="paddle">2</div>
+              <div id="paddle_2"class="paddle">1</div>
               <div class="row">
                 <div class="col-md-6">
-                  <h2>Player 1</h2>
-                  <img src="img/arrow keys.png" alt="player 1 arrow keys">
+                  <h1 id='scoreDis2'>0</h1>
                 </div>
                 <div class="col-md-6">
-                  <h2>Player 2</h2>
-                  <img src="img/wasd key.png" alt="">
+                  <h1 id='scoreDis'>0</h1>
                 </div>
               </div>
             </div>
           </div>
-        </header>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="play">
-      <div class="row">
-        <div class="col-md-12">
-          <div id="game">
-            <div id="ball"></div>
-            <div id="paddle_1"class="paddle">2</div>
-            <div id="paddle_2"class="paddle">1</div>
-            <div class="row">
-              <div class="col-md-6">
-                <h1 id='scoreDis2'>0</h1>
-              </div>
-              <div class="col-md-6">
-                <h1 id='scoreDis'>0</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <p id='score'></p>
         </div>
         <div class="row">
-          <div class="col-md-6">
-            <button id="restart_btn">Restart</button>
+          <div class="col-md-12">
+            <p id='score'></p>
           </div>
-          <div class="col-md-6">
-            <button id="score_btn">leaderboard</button>
+          <div class="row">
+            <div class="col-md-6">
+              <button id="restart_btn">Restart</button>
+            </div>
+            <div class="col-md-6">
+              <button id="score_btn">leaderboard</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="score">
-        <h1>High score</h1>
-        <header >
-          <div class="row">
-            <div class="col-md-12">
-              <table id="table">
-                <th>Player</th>
-                <th>Score</th>
-              </table>
+      <div class="container">
+        <div class="score">
+          <h1>High score</h1>
+          <header >
+            <div class="row">
+              <div class="col-md-12">
+                <table id="table">
+                  <th>Player</th>
+                  <th>Score</th>
+                </table>
+              </div>
             </div>
-          </div>
-        </header>
+          </header>
+        </div>
       </div>
     </div>
   </body>
-</div>
 </html>
